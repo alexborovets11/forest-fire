@@ -45,8 +45,8 @@ public class Fire {
 
 
         int rows = forest.length;
-
         int cols = forest[0].length;
+        boolean[][] visited = new boolean[rows][cols];
 
 
          int[][] directions = {
@@ -60,7 +60,6 @@ public class Fire {
         
         Queue<int[]> queue = new LinkedList<>();
         
-        boolean[][] visited = new boolean[rows][cols];
 
         
         return -1;
