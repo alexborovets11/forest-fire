@@ -49,8 +49,15 @@ public class Fire {
         boolean[][] visited = new boolean[rows][cols];
 
 
-        int[] dr = {-1, 1, 0, 0};
-        int[] dc = {0, 0, -1, 1};
+       
+
+        int [][] direction = {
+            {-1,0},
+            {1,0},
+            {0,0},
+            {0,0}
+
+        };
 
 
         Queue<int[]> queue = new LinkedList<>();
