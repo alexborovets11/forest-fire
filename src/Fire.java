@@ -49,18 +49,15 @@ public class Fire {
         boolean[][] visited = new boolean[rows][cols];
 
 
-         int[][] directions = {
-             {0, 1}, 
-             {1, 0}, 
-             {0, -1},
-            {-1, 0} };
-        };
+        int[] dr = {-1, 1, 0, 0};
+        int[] dc = {0, 0, -1, 1};
 
 
-        
         Queue<int[]> queue = new LinkedList<>();
-        
-        boolean[][] visited = new boolean[rows][cols];
+        queue.add(new int[] {matchR, matchC, 0});
+        visited[matchR][matchC] = true;
+
+        int maxTime = 0;
 
         
         return -1;
