@@ -46,27 +46,49 @@ public class Fire {
 
         int rows = forest.length;
         int cols = forest[0].length;
+    
         boolean[][] visited = new boolean[rows][cols];
-
-
-       
-
-        int [][] direction = {
-            {-1,0},
-            {1,0},
-            {0,0},
-            {0,0}
-
+    
+        // Check that starting point is a tree
+        if (forest[matchR][matchC] != 't') {
+            return -1;
+        }
+    
+        int[][] directions = {
+            {-1, 0},  // up
+            {1, 0},   // down
+            {0, -1},  // left
+            {0, 1}    // right
         };
-
-
+    
         Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[] {matchR, matchC, 0});
+        queue.add(new int[]{matchR, matchC, 0});
         visited[matchR][matchC] = true;
-
+    
         int maxTime = 0;
-
-        
-        return -1;
+    
+        while (!queue.isEmpty()) {
+            int[] current = queue.poll();
+            int r = current[0];
+            int c = current[1];
+            int time = current[2];
+    
+            maxTime = Math.max(maxTime, time);
+    
+            for (int[] dir : directions) {
+                int newR = r + dir[0];
+                int newC = c + dir[1];
+    
+                if (newR >= 0 && newR < rows && newC >= 0 && newC < cols
+                        && !visited[newR][newC]
+                        && forest[newR][newC] == 't') {
+    
+                    visited[newR][newC] = true;
+                    queue.add(new int[]{newR, newC, time + 1});
+                }
+            }
+        }
+    
+        return maxTime;
     }
 }
